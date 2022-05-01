@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Thank You{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 mt-5 mb-2 border border-dark bg-dark">
+                <div class="m-2">
+                    <h2 class="text-white">Thanks For Your Order</h2>
+                    <p class="text-white">Thanks for shopping in our Python Shop.<br>Order ID: {{ order.id }}.<br><br>If u wanna go back to shopping click <a class="text-decoration-none" href="{% url 'shop:product_list' %}">here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

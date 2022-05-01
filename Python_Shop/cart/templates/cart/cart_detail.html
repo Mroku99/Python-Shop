@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Python Shop Cart{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart %}
+            <tr>
+              <td><img class="bg-dark p-2" src="{{ item.product_img.url }}" width="30%" height="30%"></td>
+              <td>{{ item.product_name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>${{ item.price }}<br>
+                <a class="text-decoration-none text-danger red-hov" href="{% url 'cart:cart_remove' item.product_id %}">Remove</a>
+              </td>
+            </tr>
+    {% endfor %}
+    <tr class="bg-dark">
+        <td class="text-white">Total Price</td>
+        <td colspan="2"></td>
+        <td class="text-white">${{ cart.get_total_price }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col p-0">
+            <button class="btn btn-dark mt-2 mb-2"><a class="text-decoration-none text-white" href="{% url 'shop:product_list' %}">&#8592; Continue Shopping</a></button>
+        </div>
+        <div class="col p-0 d-flex justify-content-end">
+            <button class="btn btn-primary mt-2 mb-2"><a class="text-decoration-none text-white" href="{% url 'order:create_order' %}">Check Out</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-3"></div>
+            <div class="col-6 mt-4 mb-2 align-items-center bg-dark">
+                <div class="m-3">
+                <h1 class="text-light">{{ product.name }}</h1>
+                <p><img class="align-items-center" src="{{ product.image.url }}" alt="" width="70%" height="70%"></p>
+                {% if product.category.name == 'T-shirts' or product.category.name == 'Hoddies' %}
+                    <div class="dropdown mb-2 dropend">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Check Size
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuBtn">
+                            <li class="dropdown-item">S</li>
+                            <li class="dropdown-item">M</li>
+                            <li class="dropdown-item">L</li>
+                            <li class="dropdown-item">XL</li>
+                            <li class="dropdown-item">XXL</li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <p class="text-white-50">{{ product.description }}</p>
+                <h3 class="text-light">${{ product.price }}</h3>
+                <div class="row">
+                    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        <div class="col-2">
+                            <input class="form-control" name="quantity" type="text" placeholder="0">
+                        </div>
+                        <div class="col">
+                            {% csrf_token %}
+                            <input class="form-control mt-2 bg-secondary border-0" type="submit" value="Add To Cart">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+{% endblock %}

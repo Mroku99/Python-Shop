@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if category %}Python Shop {{category.name}} {% else %}Python Shop {% endif %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="justify-content-center p-auto pt-5 pb-3">{% if category %}{{ category.0 }}{% else %}Products{% endif %}</h1>
+    <div class="row col-xs-2 col-12 d-flex justify-content-around p-auto">
+        {% for product in products %}
+            <div class="card m-2 bg-dark" style="width: 20rem;">
+                <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" class="card-img-top p-2"></a>
+              <div class="card-body">
+                  <a class="text-decoration-none text-white-50" href="{{ product.get_absolute_url }}"><h5 class="card-title">{{ product.name }}</h5></a>
+                  <p class="card-text text-white">${{ product.price }}</p>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

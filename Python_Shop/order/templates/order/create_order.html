@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 mt-5 mb-2 border border-dark bg-dark">
+                <form class="m-3" action="" method="post">
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="firstNameInp">First Name</label>
+                        <input id="firstNameInp" class="form-control" required name="first_name" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="lastNameInp">Last Name</label>
+                        <input id="lastNameInp" class="form-control" required name="last_name" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="emailInp">Email</label>
+                        <input id="emailInp" class="form-control" required name="email" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="addressInp">Address</label>
+                        <input id="addressInp" class="form-control" required name="address" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="postalCodeInp">Postal Code</label>
+                        <input id="postalCodeInp" class="form-control" required name="postal_code" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="cityInp">City</label>
+                        <input id="cityInp" class="form-control" required name="city" type="text">
+                    </div>
+                    
+                    <p><input type="submit" value="Buy"></p>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

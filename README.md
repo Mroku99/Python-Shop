@@ -1,5 +1,5 @@
 # Python Shop
-Python Shop is the store for Pythonists
+Python Shop is the store for Pythonists created with python/django, html and css/bootstrap
 #### I took every product from https://nerdlettering.com/
 
 <h2>Bussines Logic</h2>
